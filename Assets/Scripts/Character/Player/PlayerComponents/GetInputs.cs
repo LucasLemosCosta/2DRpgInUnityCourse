@@ -7,6 +7,6 @@ public class GetInputs : MonoBehaviour
 
     public void GetDirection(InputAction.CallbackContext ctx)
     {
-        DirectionX = ctx.ReadValue<Vector2>();
+        DirectionX = ctx.ReadValue<Vector2>().normalized;
     }
 }

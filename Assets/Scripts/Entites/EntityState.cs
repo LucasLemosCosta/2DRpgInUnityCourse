@@ -22,10 +22,15 @@ public abstract class EntityState
 
     public virtual void UpdateState()
     {
-
+        CheckChangeState();
     }
 
     public virtual void Exit()
+    {
+
+    }
+
+    protected virtual void CheckChangeState()
     {
 
     }

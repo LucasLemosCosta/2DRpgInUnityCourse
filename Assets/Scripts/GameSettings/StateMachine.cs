@@ -18,6 +18,6 @@ public sealed class StateMachine
         CurrentState.Enter();
     }
 
-    public void AnableChangeState(bool anable) => canChangeState = anable;
+    public void AnableCanChangeState(bool anable) => canChangeState = anable;
 
 }

@@ -9,6 +9,11 @@ public abstract class EntityCharacter : MonoBehaviour
     public StateMachine StateMachine { get; protected set; }
 
 
+    //Attributes
+    public float speedGround;
+    public float forceJump;
+
+
     public virtual void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
@@ -24,6 +29,12 @@ public abstract class EntityCharacter : MonoBehaviour
     public virtual void Update()
     {
         
+    }
+
+    public void MovimentCharacter(float directionX,float directionY)
+    {
+        Rb.linearVelocityX = directionX;
+        Rb.linearVelocityY = directionY;
     }
 
     
