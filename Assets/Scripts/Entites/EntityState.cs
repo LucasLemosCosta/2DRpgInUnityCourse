@@ -2,11 +2,12 @@ using UnityEngine;
 
 public abstract class EntityState
 {
+
     protected StateMachine stateMachine;
     protected string animationBoolName;
 
     protected Animator anim;
-    protected Rigidbody rb;
+    protected Rigidbody2D rb;
 
     public EntityState(StateMachine stateMachine,string stateBoolName)
     {
