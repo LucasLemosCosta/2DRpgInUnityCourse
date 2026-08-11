@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public abstract class EntityCharacter : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public abstract class EntityCharacter : MonoBehaviour
     //Attributes
     public float speedGround;
     public float forceJump;
+
+    private int lookDirection = 1;
 
 
     public virtual void Awake()
@@ -28,13 +31,29 @@ public abstract class EntityCharacter : MonoBehaviour
 
     public virtual void Update()
     {
-        
+        HandleFlip();
     }
 
     public void MovimentCharacter(float directionX,float directionY)
     {
         Rb.linearVelocityX = directionX;
         Rb.linearVelocityY = directionY;
+    }
+
+
+    protected virtual void HandleFlip()
+    {
+        if (lookDirection != Math.Sign(Rb.linearVelocityX) && Math.Sign(Rb.linearVelocityX) != 0)
+        {
+            Flip();
+        }
+    }
+
+    [ContextMenu("Flip")]
+    private void Flip()
+    {
+       lookDirection *= -1;
+       transform.Rotate(new Vector3(0f, 180f, 0));
     }
 
     
