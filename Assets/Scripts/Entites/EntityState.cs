@@ -17,7 +17,7 @@ public abstract class EntityState
 
     public virtual void Enter()
     {
-
+        anim.SetBool(animationBoolName, true);
     }
 
     public virtual void UpdateState()
@@ -27,7 +27,7 @@ public abstract class EntityState
 
     public virtual void Exit()
     {
-
+        anim.SetBool(animationBoolName, false);
     }
 
     protected virtual void CheckChangeState()
