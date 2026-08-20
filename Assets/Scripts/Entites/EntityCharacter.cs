@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public abstract class EntityCharacter : MonoBehaviour
 {
@@ -10,10 +11,17 @@ public abstract class EntityCharacter : MonoBehaviour
     public StateMachine StateMachine { get; protected set; }
 
 
-    //Attributes
+    [Header("Attributes")]
     public float speedGround;
     public float forceJump;
 
+    [Header("Check Ground")]
+    
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private float sizeRayGround;
+    public bool OnGround { get; protected set; }
+
+    //Controllers
     private int lookDirection = 1;
 
 
@@ -32,6 +40,13 @@ public abstract class EntityCharacter : MonoBehaviour
     public virtual void Update()
     {
         HandleFlip();
+        HandleCollider();
+    }
+
+    public virtual void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3.down * sizeRayGround));
     }
 
     public void MovimentCharacter(float directionX,float directionY)
@@ -48,6 +63,13 @@ public abstract class EntityCharacter : MonoBehaviour
             Flip();
         }
     }
+
+    public virtual void HandleCollider()
+    {
+        OnGround = Physics2D.Raycast(transform.position, Vector2.down, sizeRayGround,whatIsGround);
+        Debug.Log(OnGround);
+    }
+
 
     [ContextMenu("Flip")]
     private void Flip()
