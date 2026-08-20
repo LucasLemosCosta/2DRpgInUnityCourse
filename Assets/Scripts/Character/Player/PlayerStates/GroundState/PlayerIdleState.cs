@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerIdleState : PlayerState
+public class PlayerIdleState : PlayerGroundState
 {
     public PlayerIdleState(PlayerController player, StateMachine stateMachine, string stateBoolName) : base(player, stateMachine, stateBoolName)
     {
@@ -25,7 +25,7 @@ public class PlayerIdleState : PlayerState
     protected override void CheckChangeState()
     {
         base.CheckChangeState();
-        if(getInputs.DirectionX.x != 0f)
+        if(getInputs.Direction.x != 0f)
         {
             stateMachine.ChangeCurrentState(player.WalkState);
         }

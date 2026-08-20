@@ -1,7 +1,7 @@
 using Unity.Multiplayer.PlayMode;
 using UnityEngine;
 
-public class PlayerWalkState : PlayerState
+public class PlayerWalkState : PlayerGroundState
 {
     public PlayerWalkState(PlayerController player, StateMachine stateMachine, string stateBoolName) : base(player, stateMachine, stateBoolName)
     {
@@ -15,7 +15,7 @@ public class PlayerWalkState : PlayerState
     public override void UpdateState()
     {
         base.UpdateState();
-        player.MovimentCharacter(getInputs.DirectionX.x * player.speedGround, rb.linearVelocityY);
+        player.MovimentCharacter(getInputs.Direction.x * player.speedGround, rb.linearVelocityY);
     }
 
     public override void Exit()
@@ -26,7 +26,7 @@ public class PlayerWalkState : PlayerState
     protected override void CheckChangeState()
     {
         base.CheckChangeState();
-        if(getInputs.DirectionX.x == 0f)
+        if(getInputs.Direction.x == 0f)
         {
             stateMachine.ChangeCurrentState(player.IdleState);
         }

@@ -5,6 +5,9 @@ public class PlayerController : EntityCharacter
     //States
     public PlayerIdleState IdleState { get; protected set; }
     public PlayerWalkState WalkState { get; protected set; }
+    public PlayerFallState FallState { get; protected set; }
+    public PlayerJumpState JumpState { get; protected set; }
+
     public GetInputs GetInputs { get; private set; }
 
 
@@ -15,6 +18,9 @@ public class PlayerController : EntityCharacter
         GetInputs = GetComponentInChildren<GetInputs>();
         IdleState = new PlayerIdleState(this, StateMachine, "Idle");
         WalkState = new PlayerWalkState(this, StateMachine, "Walk");
+        FallState = new PlayerFallState(this, StateMachine, "Fall");
+        JumpState = new PlayerJumpState(this, StateMachine, "Jump");
+
     }
 
     public override void Start()

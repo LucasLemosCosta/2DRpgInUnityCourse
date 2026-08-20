@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class PlayerFallState : MonoBehaviour
+public class PlayerFallState : PlayerAirState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public PlayerFallState(PlayerController player, StateMachine stateMachine, string stateBoolName) : base(player, stateMachine, stateBoolName)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void UpdateState()
     {
-        
+        base.UpdateState();
+        player.MovimentCharacter(getInputs.Direction.x * player.speedAir, rb.linearVelocityY);
     }
 }

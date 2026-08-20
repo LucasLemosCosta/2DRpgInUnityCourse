@@ -3,10 +3,14 @@ using UnityEngine.InputSystem;
 
 public class GetInputs : MonoBehaviour
 {
-    public Vector2 DirectionX { get; protected set; }
+    public Vector2 Direction { get; protected set; }
+    public bool OnJump { get; private set; }
 
     public void GetDirection(InputAction.CallbackContext ctx)
     {
-        DirectionX = ctx.ReadValue<Vector2>().normalized;
+        Direction = ctx.ReadValue<Vector2>().normalized;
+
     }
+
+    public void GetInputJump(InputAction.CallbackContext ctx) => OnJump = ctx.performed;
 }

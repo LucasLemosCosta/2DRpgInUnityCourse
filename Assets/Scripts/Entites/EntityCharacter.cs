@@ -13,6 +13,7 @@ public abstract class EntityCharacter : MonoBehaviour
 
     [Header("Attributes")]
     public float speedGround;
+    public float speedAir;
     public float forceJump;
 
     [Header("Check Ground")]
@@ -54,6 +55,8 @@ public abstract class EntityCharacter : MonoBehaviour
         Rb.linearVelocityX = directionX;
         Rb.linearVelocityY = directionY;
     }
+
+    
 
 
     protected virtual void HandleFlip()

@@ -9,9 +9,9 @@ public abstract class PlayerAirState : PlayerState
     protected override void CheckChangeState()
     {
         base.CheckChangeState();
-        if(true)
+        if(player.OnGround)
         {
-
+            stateMachine.ChangeCurrentState(player.IdleState);
         }
     }
 }
