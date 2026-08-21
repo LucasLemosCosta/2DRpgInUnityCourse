@@ -11,6 +11,9 @@ public class PlayerController : EntityCharacter
     public GetInputs GetInputs { get; private set; }
 
 
+   
+
+
     public override void Awake()
     {
         base.Awake();

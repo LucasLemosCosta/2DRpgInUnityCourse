@@ -11,6 +11,8 @@ public abstract class EntityCharacter : MonoBehaviour
     public StateMachine StateMachine { get; protected set; }
 
 
+
+
     [Header("Attributes")]
     public float speedGround;
     public float speedAir;
@@ -22,8 +24,14 @@ public abstract class EntityCharacter : MonoBehaviour
     [SerializeField] private float sizeRayGround;
     public bool OnGround { get; protected set; }
 
+
+    [Header("Wall Check")]
+    [SerializeField] private LayerMask whatIsWall;
+    [SerializeField] private float sizeRayWall;
+    public bool OnWall { get; protected set; }
+
     //Controllers
-    private int lookDirection = 1;
+    public int lookDirection { get; protected set; } = 1;  //The value must be 1 or -1
 
 
     public virtual void Awake()
@@ -48,6 +56,7 @@ public abstract class EntityCharacter : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + (Vector3.down * sizeRayGround));
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3.right * lookDirection * sizeRayWall));
     }
 
     public void MovimentCharacter(float directionX,float directionY)
@@ -61,7 +70,7 @@ public abstract class EntityCharacter : MonoBehaviour
 
     protected virtual void HandleFlip()
     {
-        if (lookDirection != Math.Sign(Rb.linearVelocityX) && Math.Sign(Rb.linearVelocityX) != 0)
+        if (lookDirection != Math.Sign(Rb.linearVelocityX) && Rb.linearVelocityX != 0)
         {
             Flip();
         }
@@ -70,14 +79,18 @@ public abstract class EntityCharacter : MonoBehaviour
     public virtual void HandleCollider()
     {
         OnGround = Physics2D.Raycast(transform.position, Vector2.down, sizeRayGround,whatIsGround);
-        Debug.Log(OnGround);
+        OnWall = Physics2D.Raycast(transform.position, Vector2.right * lookDirection,sizeRayWall, whatIsWall);
+            
+        Debug.Log("OnGround: " + OnGround);
+        Debug.Log("OnWall: " + OnWall);
     }
 
 
     [ContextMenu("Flip")]
     private void Flip()
     {
-       lookDirection *= -1;
+ 
+       lookDirection *= -1; //mirror the direction value
        transform.Rotate(new Vector3(0f, 180f, 0));
     }
 
