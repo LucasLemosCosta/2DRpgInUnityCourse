@@ -10,5 +10,16 @@ public class PlayerFallState : PlayerAirState
     {
         base.UpdateState();
         player.MovimentCharacter(getInputs.Direction.x * player.speedAir, rb.linearVelocityY);
+
+    }
+
+    protected override void HandleTrasitionState()
+    {
+        base.HandleTrasitionState();
+        if(player.OnWall)
+        {
+            stateMachine.ChangeCurrentState(player.WallState);
+        }
+
     }
 }

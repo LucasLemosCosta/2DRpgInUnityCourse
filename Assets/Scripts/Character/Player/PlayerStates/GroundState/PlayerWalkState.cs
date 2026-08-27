@@ -23,9 +23,9 @@ public class PlayerWalkState : PlayerGroundState
         base.Exit();
     }
 
-    protected override void CheckChangeState()
+    protected override void HandleTrasitionState()
     {
-        base.CheckChangeState();
+        base.HandleTrasitionState();
         if(getInputs.Direction.x == 0f)
         {
             stateMachine.ChangeCurrentState(player.IdleState);

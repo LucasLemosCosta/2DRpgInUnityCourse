@@ -18,6 +18,8 @@ public abstract class EntityCharacter : MonoBehaviour
     public float speedAir;
     public float forceJump;
 
+    [Range(0, 1)] public float fallSpeedMultiplier;
+
     [Header("Check Ground")]
     
     [SerializeField] private LayerMask whatIsGround;
@@ -32,6 +34,7 @@ public abstract class EntityCharacter : MonoBehaviour
 
     //Controllers
     public int lookDirection { get; protected set; } = 1;  //The value must be 1 or -1
+    private bool canFlip = true;
 
 
     public virtual void Awake()
@@ -84,12 +87,16 @@ public abstract class EntityCharacter : MonoBehaviour
 
 
     [ContextMenu("Flip")]
-    private void Flip()
+    public void Flip()
     {
- 
-       lookDirection *= -1; //mirror the direction value
-       transform.Rotate(new Vector3(0f, 180f, 0));
+        if (canFlip)
+        {
+           lookDirection *= -1; //mirror the direction value
+           transform.Rotate(new Vector3(0f, 180f, 0));
+        }
     }
+
+    public void AnableCanFlip(bool able) => canFlip = able;
 
     
 

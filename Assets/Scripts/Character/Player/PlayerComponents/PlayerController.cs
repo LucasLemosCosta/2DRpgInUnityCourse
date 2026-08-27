@@ -7,6 +7,7 @@ public class PlayerController : EntityCharacter
     public PlayerWalkState WalkState { get; protected set; }
     public PlayerFallState FallState { get; protected set; }
     public PlayerJumpState JumpState { get; protected set; }
+    public PlayerWallState WallState { get; protected set; }
 
     public GetInputs GetInputs { get; private set; }
 
@@ -23,6 +24,7 @@ public class PlayerController : EntityCharacter
         WalkState = new PlayerWalkState(this, StateMachine, "Walk");
         FallState = new PlayerFallState(this, StateMachine, "Fall");
         JumpState = new PlayerJumpState(this, StateMachine, "Jump");
+        WallState = new PlayerWallState(this, StateMachine, "Wall");
 
     }
 
@@ -36,5 +38,14 @@ public class PlayerController : EntityCharacter
     {
         base.Update();
         StateMachine.CurrentState?.UpdateState();
+    }
+
+    protected override void HandleFlip()
+    {
+        if(GetInputs.Direction.x != lookDirection && GetInputs.Direction.x != 0)
+        {
+            Flip();
+        }
+
     }
 }

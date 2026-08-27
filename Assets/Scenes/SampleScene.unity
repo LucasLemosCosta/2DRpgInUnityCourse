@@ -1004,6 +1004,7 @@ MonoBehaviour:
   speedGround: 5
   speedAir: 4
   forceJump: 4
+  fallSpeedMultiplier: 0.31
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64

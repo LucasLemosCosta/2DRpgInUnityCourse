@@ -22,7 +22,7 @@ public abstract class EntityState
 
     public virtual void UpdateState()
     {
-        CheckChangeState();
+        HandleTrasitionState();
     }
 
     public virtual void Exit()
@@ -30,7 +30,7 @@ public abstract class EntityState
         anim.SetBool(animationBoolName, false);
     }
 
-    protected virtual void CheckChangeState()
+    protected virtual void HandleTrasitionState()
     {
 
     }
