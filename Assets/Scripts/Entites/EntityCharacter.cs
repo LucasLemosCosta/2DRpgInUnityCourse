@@ -80,9 +80,6 @@ public abstract class EntityCharacter : MonoBehaviour
     {
         OnGround = Physics2D.Raycast(transform.position, Vector2.down, sizeRayGround,whatIsGround);
         OnWall = Physics2D.Raycast(transform.position, Vector2.right * lookDirection,sizeRayWall, whatIsWall);
-            
-        Debug.Log("OnGround: " + OnGround);
-        Debug.Log("OnWall: " + OnWall);
     }
 
 
