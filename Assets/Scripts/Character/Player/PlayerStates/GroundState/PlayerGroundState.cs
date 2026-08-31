@@ -12,7 +12,7 @@ public abstract class PlayerGroundState : PlayerState
         {
             stateMachine.ChangeCurrentState(player.FallState);
         }
-        if(player.OnGround && getInputs.OnJump)
+        if(player.OnGround && getInputs.OnJump && rb.linearVelocityY >= 0f)
         {
             stateMachine.ChangeCurrentState(player.JumpState);
         }

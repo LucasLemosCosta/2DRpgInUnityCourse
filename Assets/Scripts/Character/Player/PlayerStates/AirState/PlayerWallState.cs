@@ -9,7 +9,7 @@ public class PlayerWallState : PlayerAirState
     public override void Enter()
     {
         base.Enter();
-        player.AnableCanFlip(false);
+        player.CanFlip(false);
     }
     public override void UpdateState()
     {
@@ -25,13 +25,18 @@ public class PlayerWallState : PlayerAirState
             stateMachine.ChangeCurrentState(player.IdleState);
         }
 
+        if(getInputs.OnJump && player.OnWall)
+        {
+            stateMachine.ChangeCurrentState(player.WallJumpState);
+        }
+
         
     }
 
     public override void Exit()
     {
         base.Exit();
-        player.AnableCanFlip(true);
+        player.CanFlip(true);
         player.Flip();
 
     }

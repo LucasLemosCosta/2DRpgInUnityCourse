@@ -28,6 +28,7 @@ public abstract class EntityState
     public virtual void Exit()
     {
         anim.SetBool(animationBoolName, false);
+
     }
 
     protected virtual void HandleTrasitionState()

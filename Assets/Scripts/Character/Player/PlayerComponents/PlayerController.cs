@@ -8,8 +8,10 @@ public class PlayerController : EntityCharacter
     public PlayerFallState FallState { get; protected set; }
     public PlayerJumpState JumpState { get; protected set; }
     public PlayerWallState WallState { get; protected set; }
-
+    public PlayerWallJumpState WallJumpState { get; protected set; }
     public GetInputs GetInputs { get; private set; }
+
+    public Vector2 wallJump;
 
 
    
@@ -25,6 +27,7 @@ public class PlayerController : EntityCharacter
         FallState = new PlayerFallState(this, StateMachine, "Fall");
         JumpState = new PlayerJumpState(this, StateMachine, "Jump");
         WallState = new PlayerWallState(this, StateMachine, "Wall");
+        WallJumpState = new PlayerWallJumpState(this, StateMachine, "Jump");
 
     }
 
@@ -42,10 +45,12 @@ public class PlayerController : EntityCharacter
 
     protected override void HandleFlip()
     {
-        if(GetInputs.Direction.x != lookDirection && GetInputs.Direction.x != 0)
+        if(canFlip)
         {
-            Flip();
+            if(GetInputs.Direction.x != lookDirection && GetInputs.Direction.x != 0 && Rb.linearVelocityX != lookDirection)
+            {
+                Flip();
+            }
         }
-
     }
 }

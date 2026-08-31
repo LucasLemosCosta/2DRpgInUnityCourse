@@ -9,7 +9,15 @@ public class PlayerFallState : PlayerAirState
     public override void UpdateState()
     {
         base.UpdateState();
-        player.MovimentCharacter(getInputs.Direction.x * player.speedAir, rb.linearVelocityY);
+        if(getInputs.Direction.x == 0)
+        {
+            player.MovimentCharacter(rb.linearVelocityX, rb.linearVelocityY);
+
+        }
+        else
+        {
+            player.MovimentCharacter(getInputs.Direction.x * player.speedAir, rb.linearVelocityY);
+        }
 
     }
 

@@ -34,7 +34,7 @@ public abstract class EntityCharacter : MonoBehaviour
 
     //Controllers
     public int lookDirection { get; protected set; } = 1;  //The value must be 1 or -1
-    private bool canFlip = true;
+    protected bool canFlip = true;
 
 
     public virtual void Awake()
@@ -71,13 +71,6 @@ public abstract class EntityCharacter : MonoBehaviour
     
 
 
-    protected virtual void HandleFlip()
-    {
-        if (lookDirection != Math.Sign(Rb.linearVelocityX) && Rb.linearVelocityX != 0)
-        {
-            Flip();
-        }
-    }
 
     public virtual void HandleCollider()
     {
@@ -85,18 +78,26 @@ public abstract class EntityCharacter : MonoBehaviour
         OnWall = Physics2D.Raycast(transform.position, Vector2.right * lookDirection,sizeRayWall, whatIsWall);
     }
 
+    protected virtual void HandleFlip()
+    {
+        if (canFlip)
+        {
+            if (lookDirection != Math.Sign(Rb.linearVelocityX) && Rb.linearVelocityX != 0)
+            {
+                Flip();
+            }
+        }
+    }
 
     [ContextMenu("Flip")]
     public void Flip()
     {
-        if (canFlip)
-        {
-           lookDirection *= -1; //mirror the direction value
-           transform.Rotate(new Vector3(0f, 180f, 0));
-        }
+        lookDirection *= -1; //mirror the direction value
+        transform.Rotate(new Vector3(0f, 180f, 0));
+
     }
 
-    public void AnableCanFlip(bool able) => canFlip = able;
+    public void CanFlip(bool able) => canFlip = able;
 
     
 
