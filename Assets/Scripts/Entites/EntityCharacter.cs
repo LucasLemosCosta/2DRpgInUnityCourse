@@ -11,8 +11,6 @@ public abstract class EntityCharacter : MonoBehaviour
     public StateMachine StateMachine { get; protected set; }
 
 
-
-
     [Header("Attributes")]
     public float speedGround;
     public float speedAir;
@@ -62,16 +60,18 @@ public abstract class EntityCharacter : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + (Vector3.right * lookDirection * sizeRayWall));
     }
 
+    public void CallStateAnimationTrigger()
+    {
+        StateMachine.CurrentState.CallAnimationTrigger();
+    }
+
     public void MovimentCharacter(float directionX,float directionY)
     {
         Rb.linearVelocityX = directionX;
         Rb.linearVelocityY = directionY;
     }
 
-    
-
-
-
+ 
     public virtual void HandleCollider()
     {
         OnGround = Physics2D.Raycast(transform.position, Vector2.down, sizeRayGround,whatIsGround);

@@ -3,11 +3,13 @@ using UnityEngine;
 public abstract class EntityState
 {
 
-    protected StateMachine stateMachine;
-    protected string animationBoolName;
 
     protected Animator anim;
     protected Rigidbody2D rb;
+    protected StateMachine stateMachine;
+
+    protected string animationBoolName;
+    protected bool animationTrigger;
 
     public EntityState(StateMachine stateMachine,string stateBoolName)
     {
@@ -28,11 +30,16 @@ public abstract class EntityState
     public virtual void Exit()
     {
         anim.SetBool(animationBoolName, false);
-
+        animationTrigger = false;
     }
+
 
     protected virtual void HandleTrasitionState()
     {
-
+        //if and change state with StateMachine
     }
+
+    public void CallAnimationTrigger() => animationTrigger = true;
+
+
 }
