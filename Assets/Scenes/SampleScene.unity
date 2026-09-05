@@ -210,7 +210,19 @@ MonoBehaviour:
     m_ActionId: 6b444451-8a00-4d00-a97e-f47457f736a8
     m_ActionName: 'Player/Look[/Mouse/delta,/Pen/delta]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 218583121}
+        m_TargetAssemblyTypeName: GetInputs, Assembly-CSharp
+        m_MethodName: GetInputAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: 'Player/Attack[/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
@@ -950,6 +962,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1281726846}
+  - component: {fileID: 1281726849}
   - component: {fileID: 1281726848}
   - component: {fileID: 1281726847}
   m_Layer: 0
@@ -1055,6 +1068,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1281726849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281726845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 783901fed2041ee4bae92d2eb77ae632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityAnimationController
 --- !u!1 &1543980435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1205,7 @@ MonoBehaviour:
     m_Bits: 64
   sizeRayWall: 0.2
   wallJump: {x: 3, y: 15}
+  attackImpulse: {x: 0.7, y: 0}
 --- !u!1 &1558331349
 GameObject:
   m_ObjectHideFlags: 0

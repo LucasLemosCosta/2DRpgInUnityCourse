@@ -16,6 +16,10 @@ public abstract class PlayerGroundState : PlayerState
         {
             stateMachine.ChangeCurrentState(player.JumpState);
         }
+        if(player.OnGround && getInputs.OnAttack)
+        {
+            stateMachine.ChangeCurrentState(player.AttackBase);
+        }
     }
 
 }

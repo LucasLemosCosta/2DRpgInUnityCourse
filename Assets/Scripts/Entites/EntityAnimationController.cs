@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class EntityAnimationController : MonoBehaviour
@@ -7,10 +8,12 @@ public class EntityAnimationController : MonoBehaviour
 
     private void Awake()
     {
-        character = GetComponent<EntityCharacter>();
+        character = GetComponentInParent<EntityCharacter>();
+
     }
     public void AnimationAttackEnd()
     {
         character.CallStateAnimationTrigger();
+
     }
 }

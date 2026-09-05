@@ -3,15 +3,21 @@ using UnityEngine;
 public class PlayerController : EntityCharacter
 {
     //States
-    public PlayerIdleState IdleState { get; protected set; }
-    public PlayerWalkState WalkState { get; protected set; }
-    public PlayerFallState FallState { get; protected set; }
-    public PlayerJumpState JumpState { get; protected set; }
-    public PlayerWallState WallState { get; protected set; }
-    public PlayerWallJumpState WallJumpState { get; protected set; }
+    public PlayerIdleState IdleState { get; private set; }
+    public PlayerWalkState WalkState { get; private set; }
+    public PlayerFallState FallState { get; private set; }
+    public PlayerJumpState JumpState { get; private set; }
+    public PlayerWallState WallState { get; private set; }
+    public PlayerWallJumpState WallJumpState { get; private set; }
+    public PlayerStateAttackBase AttackBase { get; private set; }
     public GetInputs GetInputs { get; private set; }
 
+
     public Vector2 wallJump;
+
+    [Header("Attack detils")]
+    [SerializeField] private Vector2 attackImpulse;
+    private int comboAttack = 0;
 
 
    
@@ -28,6 +34,7 @@ public class PlayerController : EntityCharacter
         JumpState = new PlayerJumpState(this, StateMachine, "Jump");
         WallState = new PlayerWallState(this, StateMachine, "Wall");
         WallJumpState = new PlayerWallJumpState(this, StateMachine, "Jump");
+        AttackBase = new PlayerStateAttackBase(this, StateMachine, "Attack");
 
     }
 

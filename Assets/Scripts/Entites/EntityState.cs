@@ -29,8 +29,8 @@ public abstract class EntityState
 
     public virtual void Exit()
     {
-        anim.SetBool(animationBoolName, false);
         animationTrigger = false;
+        anim.SetBool(animationBoolName, false);
     }
 
 
