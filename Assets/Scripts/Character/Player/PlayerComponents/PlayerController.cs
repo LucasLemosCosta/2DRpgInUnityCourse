@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : EntityCharacter
@@ -16,11 +17,9 @@ public class PlayerController : EntityCharacter
     public Vector2 wallJump;
 
     [Header("Attack detils")]
-    [SerializeField] private Vector2 attackImpulse;
-    private int comboAttack = 0;
-
-
-   
+    public Vector2 attackVelocity;
+    public float timerAttackVelocity;
+    public int comboAttack = 0;
 
 
     public override void Awake()
@@ -50,14 +49,5 @@ public class PlayerController : EntityCharacter
         StateMachine.CurrentState?.UpdateState();
     }
 
-    protected override void HandleFlip()
-    {
-        if(canFlip)
-        {
-            if(GetInputs.Direction.x != lookDirection && GetInputs.Direction.x != 0 && Rb.linearVelocityX != lookDirection)
-            {
-                Flip();
-            }
-        }
-    }
+
 }

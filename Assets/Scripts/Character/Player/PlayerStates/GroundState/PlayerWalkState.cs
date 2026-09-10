@@ -15,7 +15,7 @@ public class PlayerWalkState : PlayerGroundState
     public override void UpdateState()
     {
         base.UpdateState();
-        player.MovimentCharacter(getInputs.Direction.x * player.speedGround, rb.linearVelocityY);
+        player.SetVelocity(getInputs.Direction.x * player.speedGround, rb.linearVelocityY);
     }
 
     public override void Exit()

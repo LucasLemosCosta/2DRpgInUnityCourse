@@ -10,27 +10,18 @@ public class PlayerWallJumpState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        player.CanFlip(false);
-        player.MovimentCharacter(0f, player.wallJump.y);
+        player.SetVelocity(0f, player.wallJump.y);
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-        player.MovimentCharacter(player.wallJump.x * player.lookDirection,rb.linearVelocityY );
+        player.SetVelocity(player.wallJump.x * player.lookDirection,rb.linearVelocityY );
 
-    }
-
-    protected override void HandleTrasitionState()
-    {
-        base.HandleTrasitionState();
-
- 
     }
 
     public override void Exit()
     {
         base.Exit();
-        player.CanFlip(true);
     }
 }

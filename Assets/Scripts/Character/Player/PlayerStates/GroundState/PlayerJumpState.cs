@@ -9,13 +9,13 @@ public class PlayerJumpState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        player.MovimentCharacter(0f, player.forceJump);
+        player.SetVelocity(0f, player.forceJump);
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-        player.MovimentCharacter(getInputs.Direction.x * player.speedAir, rb.linearVelocityY);
+        player.SetVelocity(getInputs.Direction.x * player.speedAir, rb.linearVelocityY);
 
     }
 

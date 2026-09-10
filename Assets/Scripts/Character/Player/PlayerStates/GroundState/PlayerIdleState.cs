@@ -9,17 +9,7 @@ public class PlayerIdleState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-    }
-
-    public override void UpdateState()
-    {
-        base.UpdateState();
-        player.MovimentCharacter(0f, rb.linearVelocityY);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
+        player.SetVelocity(0f, rb.linearVelocityY);
     }
 
     protected override void HandleTrasitionState()

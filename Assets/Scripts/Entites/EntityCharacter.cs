@@ -19,7 +19,7 @@ public abstract class EntityCharacter : MonoBehaviour
     [Range(0, 1)] public float fallSpeedMultiplier;
 
     [Header("Check Ground")]
-    
+
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float sizeRayGround;
     public bool OnGround { get; protected set; }
@@ -32,8 +32,6 @@ public abstract class EntityCharacter : MonoBehaviour
 
     //Controllers
     public int lookDirection { get; protected set; } = 1;  //The value must be 1 or -1
-    protected bool canFlip = true;
-
 
     public virtual void Awake()
     {
@@ -44,12 +42,11 @@ public abstract class EntityCharacter : MonoBehaviour
 
     public virtual void Start()
     {
-        
+
     }
 
     public virtual void Update()
     {
-        HandleFlip();
         HandleCollider();
     }
 
@@ -65,28 +62,24 @@ public abstract class EntityCharacter : MonoBehaviour
         StateMachine.CurrentState.CallAnimationTrigger();
     }
 
-    public void MovimentCharacter(float directionX,float directionY)
+    public void SetVelocity(float directionX, float directionY)
     {
-        Rb.linearVelocityX = directionX;
-        Rb.linearVelocityY = directionY;
+        Rb.linearVelocity = new Vector2(directionX, directionY);
+        HandleFlip(directionX);
     }
 
- 
+
     public virtual void HandleCollider()
     {
-        OnGround = Physics2D.Raycast(transform.position, Vector2.down, sizeRayGround,whatIsGround);
-        OnWall = Physics2D.Raycast(transform.position, Vector2.right * lookDirection,sizeRayWall, whatIsWall);
+        OnGround = Physics2D.Raycast(transform.position, Vector2.down, sizeRayGround, whatIsGround);
+        OnWall = Physics2D.Raycast(transform.position, Vector2.right * lookDirection, sizeRayWall, whatIsWall);
     }
 
-    protected virtual void HandleFlip()
+    protected virtual void HandleFlip(float directionX)
     {
-        if (canFlip)
-        {
-            if (lookDirection != Math.Sign(Rb.linearVelocityX) && Rb.linearVelocityX != 0)
-            {
-                Flip();
-            }
-        }
+
+        if (Math.Sign(directionX) != lookDirection && Math.Sign(directionX) != 0)
+            Flip();
     }
 
     [ContextMenu("Flip")]
@@ -97,8 +90,7 @@ public abstract class EntityCharacter : MonoBehaviour
 
     }
 
-    public void CanFlip(bool able) => canFlip = able;
 
-    
+
 
 }

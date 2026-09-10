@@ -11,12 +11,12 @@ public class PlayerFallState : PlayerAirState
         base.UpdateState();
         if(getInputs.Direction.x == 0)
         {
-            player.MovimentCharacter(rb.linearVelocityX, rb.linearVelocityY);
+            player.SetVelocity(rb.linearVelocityX, rb.linearVelocityY);
 
         }
         else
         {
-            player.MovimentCharacter(getInputs.Direction.x * player.speedAir, rb.linearVelocityY);
+            player.SetVelocity(getInputs.Direction.x * player.speedAir, rb.linearVelocityY);
         }
 
     }
@@ -24,10 +24,9 @@ public class PlayerFallState : PlayerAirState
     protected override void HandleTrasitionState()
     {
         base.HandleTrasitionState();
-        if(player.OnWall)
-        {
+        if(player.OnWall &&  !player.OnGround )
             stateMachine.ChangeCurrentState(player.WallState);
-        }
+
 
     }
 }
