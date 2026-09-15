@@ -18,16 +18,9 @@ public class PlayerStateAttackBase : PlayerState
     {
         base.Enter();
 
-
-        
-
-
-        timerAttackVelocity = player.timerAttackVelocity;
-        player.SetVelocity(player.attackVelocity.x * player.lookDirection, rb.linearVelocityY);
-
         anim.SetInteger("AttackCombo", attackIndex);
-        if (attackIndex >= maxComboNumber) attackIndex = FirstComboIndex;
-
+        ApplyAttackVelocity();
+        ResetComboIndexIfNeeded();
         
 
         
@@ -36,9 +29,9 @@ public class PlayerStateAttackBase : PlayerState
     public override void UpdateState()
     {
         base.UpdateState();
-        Debug.Log(rb.linearVelocityX);
-        Debug.Log(player.attackVelocity.x * player.lookDirection);
+
         timerAttackVelocity -= Time.deltaTime;
+
         if (timerAttackVelocity < 0)
         {
             player.SetVelocity(0, rb.linearVelocityX);
@@ -61,4 +54,16 @@ public class PlayerStateAttackBase : PlayerState
             stateMachine.ChangeCurrentState(player.IdleState);
         }
     }
+
+    private void ResetComboIndexIfNeeded()
+    {
+        if (attackIndex >= maxComboNumber) attackIndex = FirstComboIndex;
+    }
+    private void ApplyAttackVelocity()
+    {
+        timerAttackVelocity = player.timerAttackVelocity;
+        player.SetVelocity(player.attackVelocity.x * player.lookDirection, rb.linearVelocityY);
+    }
+
+
 }
