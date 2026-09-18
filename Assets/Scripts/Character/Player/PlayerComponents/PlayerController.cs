@@ -18,8 +18,9 @@ public class PlayerController : EntityCharacter
 
     [Header("Attack detils")]
     public Vector2 attackVelocity;
+    public float timeToResetAttack;
     public float timerAttackVelocity;
-    public int comboAttackIndex = 0;
+ 
 
 
     public override void Awake()

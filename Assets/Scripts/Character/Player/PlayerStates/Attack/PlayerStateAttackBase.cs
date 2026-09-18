@@ -5,7 +5,8 @@ public class PlayerStateAttackBase : PlayerState
     private float timerAttackVelocity;
 
     private int attackIndex = 0;
-    private int maxComboNumber = 2;
+    private int maxComboNumber = 3;
+    private float lastAttack;
     private const int FirstComboIndex = 0;
 
 
@@ -18,12 +19,14 @@ public class PlayerStateAttackBase : PlayerState
     {
         base.Enter();
 
-        anim.SetInteger("AttackCombo", attackIndex);
-        ApplyAttackVelocity();
-        ResetComboIndexIfNeeded();
-        
 
+        ResetComboIndexIfNeeded();
+        ApplyAttackVelocity();
         
+        anim.SetInteger("AttackCombo", attackIndex);
+
+
+
 
     }
     public override void UpdateState()
@@ -44,6 +47,8 @@ public class PlayerStateAttackBase : PlayerState
     {
         base.Exit();
         attackIndex++;
+        lastAttack = Time.time;
+
     }
 
     protected override void HandleTrasitionState()
@@ -57,6 +62,7 @@ public class PlayerStateAttackBase : PlayerState
 
     private void ResetComboIndexIfNeeded()
     {
+        if (Time.time > lastAttack + player.timeToResetAttack) attackIndex = FirstComboIndex;
         if (attackIndex >= maxComboNumber) attackIndex = FirstComboIndex;
     }
     private void ApplyAttackVelocity()
