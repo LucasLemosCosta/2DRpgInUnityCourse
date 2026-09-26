@@ -1206,8 +1206,8 @@ MonoBehaviour:
   sizeRayWall: 0.24
   wallJump: {x: 1, y: 15}
   attackVelocity: {x: 2, y: 0.5}
+  timeToResetAttack: 0.5
   timerAttackVelocity: 0.1
-  comboAttack: 0
 --- !u!1 &1558331349
 GameObject:
   m_ObjectHideFlags: 0
