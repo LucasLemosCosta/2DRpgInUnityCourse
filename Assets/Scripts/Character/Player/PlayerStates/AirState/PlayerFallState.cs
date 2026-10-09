@@ -21,9 +21,9 @@ public class PlayerFallState : PlayerAirState
 
     }
 
-    protected override void HandleTrasitionState()
+    protected override void HandleTransitionState()
     {
-        base.HandleTrasitionState();
+        base.HandleTransitionState();
         if(player.OnWall &&  !player.OnGround )
             stateMachine.ChangeCurrentState(player.WallState);
 

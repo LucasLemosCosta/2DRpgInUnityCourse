@@ -24,7 +24,7 @@ public abstract class EntityState
 
     public virtual void UpdateState()
     {
-        HandleTrasitionState();
+        HandleTransitionState();
     }
 
     public virtual void Exit()
@@ -34,7 +34,7 @@ public abstract class EntityState
     }
 
 
-    protected virtual void HandleTrasitionState()
+    protected virtual void HandleTransitionState()
     {
         //if and change state with StateMachine
     }

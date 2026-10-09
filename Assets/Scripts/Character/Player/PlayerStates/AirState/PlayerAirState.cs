@@ -6,9 +6,9 @@ public abstract class PlayerAirState : PlayerState
     {
     }
 
-    protected override void HandleTrasitionState()
+    protected override void HandleTransitionState()
     {
-        base.HandleTrasitionState();
+        base.HandleTransitionState();
         if(player.OnGround)
         {
             stateMachine.ChangeCurrentState(player.IdleState);

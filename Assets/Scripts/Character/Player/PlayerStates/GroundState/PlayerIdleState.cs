@@ -12,9 +12,9 @@ public class PlayerIdleState : PlayerGroundState
         player.SetVelocity(0f, rb.linearVelocityY);
     }
 
-    protected override void HandleTrasitionState()
+    protected override void HandleTransitionState()
     {
-        base.HandleTrasitionState();
+        base.HandleTransitionState();
         if(getInputs.Direction.x != 0f)
         {
             stateMachine.ChangeCurrentState(player.WalkState);

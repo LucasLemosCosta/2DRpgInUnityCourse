@@ -5,10 +5,9 @@ using Unity.VisualScripting;
 public abstract class EntityCharacter : MonoBehaviour
 {
 
-    //Componets
     public Rigidbody2D Rb { get; protected set; }
     public Animator Anim { get; protected set; }
-    public StateMachine StateMachine { get; protected set; }
+    protected StateMachine StateMachine;
 
 
     [Header("Attributes")]
@@ -22,6 +21,7 @@ public abstract class EntityCharacter : MonoBehaviour
 
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float sizeRayGround;
+    [SerializeField] private Transform pointGround;
     public bool OnGround { get; protected set; }
 
 
@@ -30,7 +30,6 @@ public abstract class EntityCharacter : MonoBehaviour
     [SerializeField] private float sizeRayWall;
     public bool OnWall { get; protected set; }
 
-    //Controllers
     public int lookDirection { get; protected set; } = 1;  //The value must be 1 or -1
 
     public virtual void Awake()

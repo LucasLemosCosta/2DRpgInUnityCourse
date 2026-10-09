@@ -16,7 +16,7 @@ public class PlayerController : EntityCharacter
 
     public Vector2 wallJump;
 
-    [Header("Attack detils")]
+    [Header("Attack details")]
     public Vector2 attackVelocity;
     public float timeToResetAttack;
     public float timerAttackVelocity;

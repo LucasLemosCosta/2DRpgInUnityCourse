@@ -5,14 +5,14 @@ public abstract class PlayerGroundState : PlayerState
     protected PlayerGroundState(PlayerController player, StateMachine stateMachine, string stateBoolName) : base(player, stateMachine, stateBoolName)
     {
     }
-    protected override void HandleTrasitionState()
+    protected override void HandleTransitionState()
     {
-        base.HandleTrasitionState();
+        base.HandleTransitionState();
         if(!player.OnGround && rb.linearVelocityY < 0f)
         {
             stateMachine.ChangeCurrentState(player.FallState);
         }
-        if(player.OnGround && getInputs.OnJump && rb.linearVelocityY >= 0f)
+        if(player.OnGround && getInputs.OnJump)
         {
             stateMachine.ChangeCurrentState(player.JumpState);
         }

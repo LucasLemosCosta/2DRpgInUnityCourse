@@ -37,7 +37,7 @@ public class PlayerStateAttackBase : PlayerState
 
         if (timerAttackVelocity < 0)
         {
-            player.SetVelocity(0, rb.linearVelocityX);
+            player.SetVelocity(0, rb.linearVelocityY);
         }
 
 
@@ -51,9 +51,9 @@ public class PlayerStateAttackBase : PlayerState
 
     }
 
-    protected override void HandleTrasitionState()
+    protected override void HandleTransitionState()
     {
-        base.HandleTrasitionState();
+        base.HandleTransitionState();
         if (animationTrigger)
         {
             stateMachine.ChangeCurrentState(player.IdleState);

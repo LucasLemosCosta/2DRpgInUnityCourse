@@ -19,9 +19,9 @@ public class PlayerWallState : PlayerAirState
         player.SetVelocity(0, rb.linearVelocityY * player.fallSpeedMultiplier);
     }
 
-    protected override void HandleTrasitionState()
+    protected override void HandleTransitionState()
     {
-        base.HandleTrasitionState();
+        base.HandleTransitionState();
         if(getInputs.OnJump && player.OnWall)
         {
             stateMachine.ChangeCurrentState(player.WallJumpState);
