@@ -21,7 +21,7 @@ public abstract class EntityCharacter : MonoBehaviour
 
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float sizeRayGround;
-    [SerializeField] private Transform pointGround;
+    [SerializeField] private Transform targetGround;
     public bool OnGround { get; protected set; }
 
 
@@ -51,8 +51,11 @@ public abstract class EntityCharacter : MonoBehaviour
 
     public virtual void OnDrawGizmos()
     {
+        Vector3 groundPosition = targetGround == null ?
+        transform.position : targetGround.position;
+
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3.down * sizeRayGround));
+        Gizmos.DrawLine(groundPosition, groundPosition + (Vector3.down * sizeRayGround));
         Gizmos.DrawLine(transform.position, transform.position + (Vector3.right * lookDirection * sizeRayWall));
     }
 
@@ -70,7 +73,11 @@ public abstract class EntityCharacter : MonoBehaviour
 
     public virtual void HandleCollider()
     {
-        OnGround = Physics2D.Raycast(transform.position, Vector2.down, sizeRayGround, whatIsGround);
+        OnGround = targetGround != null ?
+         Physics2D.Raycast(targetGround.position, Vector2.down, sizeRayGround, whatIsGround) :
+         Physics2D.Raycast(transform.position, Vector2.down, sizeRayGround, whatIsGround);
+
+
         OnWall = Physics2D.Raycast(transform.position, Vector2.right * lookDirection, sizeRayWall, whatIsWall);
     }
 
