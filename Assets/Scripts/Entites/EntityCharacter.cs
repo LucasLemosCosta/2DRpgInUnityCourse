@@ -47,6 +47,7 @@ public abstract class EntityCharacter : MonoBehaviour
     public virtual void Update()
     {
         HandleCollider();
+        StateMachine.CurrentState?.UpdateState();
     }
 
     public virtual void OnDrawGizmos()
@@ -93,7 +94,6 @@ public abstract class EntityCharacter : MonoBehaviour
     {
         lookDirection *= -1; //mirror the direction value
         transform.Rotate(new Vector3(0f, 180f, 0));
-
     }
 
 

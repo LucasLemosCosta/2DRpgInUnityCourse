@@ -44,11 +44,6 @@ public class PlayerController : EntityCharacter
         StateMachine?.InitStateMachine(IdleState);
         
     }
-    public override void Update()
-    {
-        base.Update();
-        StateMachine.CurrentState?.UpdateState();
-    }
 
 
 }

@@ -7,9 +7,9 @@ public abstract class EntityState
     protected Animator anim;
     protected Rigidbody2D rb;
     protected StateMachine stateMachine;
-
     protected string animationBoolName;
     protected bool animationTrigger;
+    
 
     public EntityState(StateMachine stateMachine,string stateBoolName)
     {
