@@ -15,9 +15,12 @@ public class PlayerIdleState : PlayerGroundState
     protected override void HandleTransitionState()
     {
         base.HandleTransitionState();
-        if(getInputs.Direction.x != 0f)
+        
+        bool lockChangeToWalk = player.lookDirection == getInputs.Direction.x && player.OnWall;
+        if(getInputs.Direction.x != 0f && !lockChangeToWalk)
         {
             stateMachine.ChangeCurrentState(player.WalkState);
         }
+     
     }
 }

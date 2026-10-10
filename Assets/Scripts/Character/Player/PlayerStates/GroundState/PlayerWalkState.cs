@@ -26,7 +26,8 @@ public class PlayerWalkState : PlayerGroundState
     protected override void HandleTransitionState()
     {
         base.HandleTransitionState();
-        if(getInputs.Direction.x == 0f)
+
+        if(getInputs.Direction.x == 0f || player.OnWall)
         {
             stateMachine.ChangeCurrentState(player.IdleState);
         }

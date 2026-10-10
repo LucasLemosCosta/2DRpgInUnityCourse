@@ -24,5 +24,4 @@ public class BaseEnemy_WalkState : EnemyState
         }
     }
 
-
 }
