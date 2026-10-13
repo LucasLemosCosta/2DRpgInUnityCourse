@@ -263,8 +263,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.08}
-  m_Size: {x: 0.36, y: 1.07}
+  m_Offset: {x: 0, y: -0.07113963}
+  m_Size: {x: 0.36, y: 1.0522794}
   m_Direction: 0
 --- !u!50 &25530705
 Rigidbody2D:
@@ -770,7 +770,7 @@ Transform:
   m_GameObject: {fileID: 450795987}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.425, y: -0.278, z: 0}
+  m_LocalPosition: {x: 0.26, y: -0.278, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1312,7 +1312,7 @@ Transform:
   m_GameObject: {fileID: 908409691}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.076, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1862,7 +1862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1432162815}
-  - component: {fileID: 1432162814}
+  - component: {fileID: 1432162816}
   - component: {fileID: 1432162813}
   - component: {fileID: 1432162812}
   m_Layer: 0
@@ -1906,8 +1906,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.09291148, y: -0.18135804}
-  m_Size: {x: 0.32380056, y: 0.6693944}
+  m_Offset: {x: -0.029219389, y: -0.16724649}
+  m_Size: {x: 0.253829, y: 0.6411713}
   m_Direction: 0
 --- !u!50 &1432162813
 Rigidbody2D:
@@ -1936,32 +1936,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1432162814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432162811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1156b476be9355b42badb12c95e4423b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  speed: 1
-  forceJump: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  sizeRayGround: 0.33
-  targetGround: {fileID: 450795988}
-  primaryTargetWall: {fileID: 0}
-  secondTargetWall: {fileID: 0}
-  whatIsWall:
-    serializedVersion: 2
-    m_Bits: 64
-  sizeRayWall: 0.6
-  timeToQuitIdle: 2
 --- !u!4 &1432162815
 Transform:
   m_ObjectHideFlags: 0
@@ -1971,7 +1945,7 @@ Transform:
   m_GameObject: {fileID: 1432162811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.97, y: 0.781, z: 0}
+  m_LocalPosition: {x: 3.07, y: 0.781, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1979,6 +1953,32 @@ Transform:
   - {fileID: 450795988}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1432162816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432162811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276613cc05191d44e937e6cddd6883b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySkeleton
+  speed: 3
+  forceJump: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  sizeRayGround: 0.29
+  targetGround: {fileID: 450795988}
+  primaryTargetWall: {fileID: 0}
+  secondTargetWall: {fileID: 0}
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
+  sizeRayWall: 0
+  timeToQuitIdle: 3
 --- !u!1 &1498638486
 GameObject:
   m_ObjectHideFlags: 0
