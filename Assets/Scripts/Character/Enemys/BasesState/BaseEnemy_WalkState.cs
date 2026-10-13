@@ -18,8 +18,13 @@ public class BaseEnemy_WalkState : EnemyState
     public override void UpdateState()
     {
         base.UpdateState();
-        if(!enemy.OnGround || enemy.OnWall)
+        if(!enemy.OnGround)
         {
+            stateMachine.ChangeCurrentState(enemy.idleState);
+        }
+        if(enemy.OnWall)
+        {
+            enemy.Flip();
             stateMachine.ChangeCurrentState(enemy.idleState);
         }
     }

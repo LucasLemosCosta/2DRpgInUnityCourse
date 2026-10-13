@@ -8,6 +8,8 @@ public class Enemy : EntityCharacter
     public BaseEnemy_IdleState idleState {get; protected set;}
     public BaseEnemy_WalkState walkState{get; protected set;}
 
+    [Range(0,2)] public float walkSpeedAnimMultiplier;
+
 
 
 

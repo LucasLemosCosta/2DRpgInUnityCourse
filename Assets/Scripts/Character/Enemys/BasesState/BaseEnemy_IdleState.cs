@@ -30,7 +30,10 @@ public class BaseEnemy_IdleState : EnemyState
     public override void Exit()
     {
         base.Exit();
-        enemy.Flip();
+        if(!enemy.OnGround)
+        {
+            enemy.Flip();
+        }
     }
 
 
