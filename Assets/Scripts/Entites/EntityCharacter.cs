@@ -11,11 +11,8 @@ public abstract class EntityCharacter : MonoBehaviour
 
 
     [Header("Attributes")]
-    public float speedGround;
-    public float speedAir;
+    public float speed;
     public float forceJump;
-
-    [Range(0, 1)] public float fallSpeedMultiplier;
 
     [Header("Check Ground")]
 
@@ -26,11 +23,18 @@ public abstract class EntityCharacter : MonoBehaviour
 
 
     [Header("Wall Check")]
+    [SerializeField] private Transform primaryTargetWall;
+    [SerializeField] private Transform secondTargetWall;
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private float sizeRayWall;
-    public bool OnWall { get; protected set; }
 
+    private Vector3 groundPosition;
+    private Vector3 primaryWallPosition;
+    private Vector3 secondWallPosition;
+
+    public bool OnWall { get; protected set; }
     public int lookDirection { get; protected set; } = 1;  //The value must be 1 or -1
+
 
     public virtual void Awake()
     {
@@ -52,12 +56,11 @@ public abstract class EntityCharacter : MonoBehaviour
 
     public virtual void OnDrawGizmos()
     {
-        Vector3 groundPosition = targetGround == null ?
-        transform.position : targetGround.position;
-
+        GetCollidersPosition();
         Gizmos.color = Color.red;
         Gizmos.DrawLine(groundPosition, groundPosition + (Vector3.down * sizeRayGround));
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3.right * lookDirection * sizeRayWall));
+        Gizmos.DrawLine(primaryWallPosition, primaryWallPosition + (Vector3.right * lookDirection * sizeRayWall));
+        Gizmos.DrawLine(secondWallPosition, secondWallPosition + (Vector3.right * lookDirection * sizeRayWall));
     }
 
     public void CallStateAnimationTrigger()
@@ -71,22 +74,33 @@ public abstract class EntityCharacter : MonoBehaviour
         HandleFlip(directionX);
     }
 
-
     public virtual void HandleCollider()
     {
-        OnGround = targetGround != null ?
-         Physics2D.Raycast(targetGround.position, Vector2.down, sizeRayGround, whatIsGround) :
-         Physics2D.Raycast(transform.position, Vector2.down, sizeRayGround, whatIsGround);
+        GetCollidersPosition();
 
+        OnGround = Physics2D.Raycast(groundPosition , Vector2.down, sizeRayGround, whatIsGround);
+        OnWall =  Physics2D.Raycast(primaryWallPosition, Vector2.right * lookDirection, sizeRayWall, whatIsWall) &&
+        Physics2D.Raycast(secondWallPosition, Vector2.right * lookDirection, sizeRayWall, whatIsWall);
+    }
 
-        OnWall = Physics2D.Raycast(transform.position, Vector2.right * lookDirection, sizeRayWall, whatIsWall);
+    private void GetCollidersPosition()
+    {
+        groundPosition = targetGround == null ?
+        transform.position : targetGround.position;
+
+        primaryWallPosition = primaryTargetWall == null ?
+        transform.position : primaryTargetWall.position;
+
+        secondWallPosition = secondTargetWall == null ?
+        transform.position : secondTargetWall.position;
     }
 
     protected virtual void HandleFlip(float directionX)
     {
-
         if (Math.Sign(directionX) != lookDirection && Math.Sign(directionX) != 0)
+        {
             Flip();
+        }
     }
 
     [ContextMenu("Flip")]

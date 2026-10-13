@@ -9,7 +9,7 @@ public class BaseEnemy_WalkState : EnemyState
     override public void Enter()
     {
         base.Enter();
-        enemy.SetVelocity(enemy.speedGround * enemy.lookDirection, rb.linearVelocityY);
+        enemy.SetVelocity(enemy.speed * enemy.lookDirection, rb.linearVelocityY);
         
 
 

@@ -15,7 +15,6 @@ public class PlayerWallState : PlayerAirState
     public override void UpdateState()
     {
         base.UpdateState();
-
         player.SetVelocity(0, rb.linearVelocityY * player.fallSpeedMultiplier);
     }
 
@@ -26,6 +25,10 @@ public class PlayerWallState : PlayerAirState
         {
             stateMachine.ChangeCurrentState(player.WallJumpState);
         }  
+        if(!player.OnWall)
+        {
+            stateMachine.ChangeCurrentState(player.FallState);
+        }
     }
 
     public override void Exit()

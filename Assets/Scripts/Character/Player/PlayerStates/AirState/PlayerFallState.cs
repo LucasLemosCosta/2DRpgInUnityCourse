@@ -16,7 +16,7 @@ public class PlayerFallState : PlayerAirState
         }
         else
         {
-            player.SetVelocity(getInputs.Direction.x * player.speedAir, rb.linearVelocityY);
+            player.SetVelocity(getInputs.Direction.x * player.speed, rb.linearVelocityY);
         }
 
     }

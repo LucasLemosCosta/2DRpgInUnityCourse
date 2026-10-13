@@ -15,6 +15,7 @@ public class PlayerController : EntityCharacter
 
 
     public Vector2 wallJump;
+    [Range(0, 1)] public float fallSpeedMultiplier;
 
     [Header("Attack details")]
     public Vector2 attackVelocity;

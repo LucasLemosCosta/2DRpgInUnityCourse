@@ -15,7 +15,7 @@ public class PlayerJumpState : PlayerGroundState
     public override void UpdateState()
     {
         base.UpdateState();
-        player.SetVelocity(getInputs.Direction.x * player.speedAir, rb.linearVelocityY);
+        player.SetVelocity(getInputs.Direction.x * player.speed, rb.linearVelocityY);
 
     }
 
