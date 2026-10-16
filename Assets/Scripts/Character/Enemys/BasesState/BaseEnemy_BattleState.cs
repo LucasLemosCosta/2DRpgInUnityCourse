@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public class BaseEnemy_BattleState : MonoBehaviour
+public class BaseEnemy_BattleState : EnemyState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public BaseEnemy_BattleState(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    override public void Enter()
     {
-        
+        base.Enter();
+        enemy.SetVelocity(0, rb.linearVelocityY);
+        Debug.Log("Battle State");
     }
+
+    
 }

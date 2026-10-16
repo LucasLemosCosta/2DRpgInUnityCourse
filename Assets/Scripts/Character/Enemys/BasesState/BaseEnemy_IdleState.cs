@@ -1,7 +1,6 @@
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
-public class BaseEnemy_IdleState : EnemyState
+public class BaseEnemy_IdleState : BaseEnemy_GroundState
 {
 
     private float timeOfEnterState = 0f;

@@ -25,7 +25,7 @@ public abstract class EntityCharacter : MonoBehaviour
     [Header("Wall Check")]
     [SerializeField] private Transform primaryTargetWall;
     [SerializeField] private Transform secondTargetWall;
-    [SerializeField] private LayerMask whatIsWall;
+    [SerializeField] protected LayerMask whatIsWall;
     [SerializeField] private float sizeRayWall;
 
     private Vector3 groundPosition;
@@ -83,7 +83,7 @@ public abstract class EntityCharacter : MonoBehaviour
         Physics2D.Raycast(secondWallPosition, Vector2.right * lookDirection, sizeRayWall, whatIsWall);
     }
 
-    private void GetCollidersPosition()
+    public virtual void GetCollidersPosition()
     {
         groundPosition = targetGround == null ?
         transform.position : targetGround.position;

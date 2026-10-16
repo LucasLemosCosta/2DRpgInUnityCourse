@@ -9,6 +9,7 @@ public class EnemySkeleton : Enemy
         idleState = new BaseEnemy_IdleState(this,StateMachine,"Idle");
         walkState = new BaseEnemy_WalkState(this,StateMachine,"Walk");
         attackState = new BaseEnemy_AttackState(this,StateMachine,"Attack");
+        battleState = new BaseEnemy_BattleState(this,StateMachine,"Battle");
 
     }
 
