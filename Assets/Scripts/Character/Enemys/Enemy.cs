@@ -5,12 +5,12 @@ public class Enemy : EntityCharacter
 {
 
 
-    public BaseEnemy_IdleState idleState {get; protected set;}
-    public BaseEnemy_WalkState walkState{get; protected set;}
-    public BaseEnemy_BattleState battleState {get; protected set;}
-    public BaseEnemy_AttackState attackState {get; protected set;}
+    public BaseEnemy_IdleState idleState { get; protected set; }
+    public BaseEnemy_WalkState walkState { get; protected set; }
+    public BaseEnemy_BattleState battleState { get; protected set; }
+    public BaseEnemy_AttackState attackState { get; protected set; }
 
-    [Range(0,2)] public float walkSpeedAnimMultiplier;
+    [Range(0, 2)] public float walkSpeedAnimMultiplier;
     public float timeToQuitIdle = 3;
 
     [Header("DetectedPlayer")]
@@ -18,6 +18,10 @@ public class Enemy : EntityCharacter
     [SerializeField] private Transform targetPlayerCheck;
     public float detectionDistance = 5f;
     private Vector3 detectionPosition;
+
+    [Header("Battle details")]
+    public float attackDistance;
+    public float battleSpeed;
 
 
 
@@ -31,10 +35,10 @@ public class Enemy : EntityCharacter
         StateMachine.InitStateMachine(idleState);
     }
 
-    public RaycastHit2D CheckPlayerDetected()
+    public RaycastHit2D PlayerDetected()
     {
         RaycastHit2D hit = Physics2D.Raycast(detectionPosition, Vector2.right * lookDirection, detectionDistance, whatIsPlayer | whatIsWall);
-        if(hit.collider == null || hit.collider.gameObject.layer != LayerMask.NameToLayer("Player"))
+        if (hit.collider == null || hit.collider.gameObject.layer != LayerMask.NameToLayer("Player"))
         {
             hit = default;
         }

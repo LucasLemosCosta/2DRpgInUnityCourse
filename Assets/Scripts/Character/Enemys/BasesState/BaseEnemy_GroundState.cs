@@ -9,7 +9,7 @@ public class BaseEnemy_GroundState : EnemyState
     public override void UpdateState()
     {
         base.UpdateState();
-        if(enemy.CheckPlayerDetected() == true)
+        if(enemy.PlayerDetected() == true)
         {
             stateMachine.ChangeCurrentState(enemy.battleState);
         }
