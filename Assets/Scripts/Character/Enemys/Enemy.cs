@@ -20,8 +20,12 @@ public class Enemy : EntityCharacter
     private Vector3 detectionPosition;
 
     [Header("Battle details")]
-    public float attackDistance;
-    public float battleSpeed;
+    public float attackDistance = 2;
+    public float battleSpeed = 1.2f;
+    public float battleDuration = 5;
+    //public Vector2 impactAttack;
+    //public float impactDuration;
+    
 
 
 

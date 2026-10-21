@@ -15,9 +15,11 @@ public class BaseEnemy_AttackState : EnemyState
     public override void UpdateState()
     {
         base.UpdateState();
+        enemy.SetVelocity(0,rb.linearVelocityY);
+
         if (animationTrigger)
         {
-            stateMachine.ChangeCurrentState(enemy.idleState);
+            stateMachine.ChangeCurrentState(enemy.battleState);
         }
     }
 }
