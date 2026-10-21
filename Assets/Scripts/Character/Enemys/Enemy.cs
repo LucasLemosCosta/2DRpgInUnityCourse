@@ -23,8 +23,8 @@ public class Enemy : EntityCharacter
     public float attackDistance = 2;
     public float battleSpeed = 1.2f;
     public float battleDuration = 5;
-    //public Vector2 impactAttack;
-    //public float impactDuration;
+    public Vector2 impactAttack;
+    public float impactDuration;
     
 
 

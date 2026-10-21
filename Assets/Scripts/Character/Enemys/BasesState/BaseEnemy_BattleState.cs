@@ -41,13 +41,13 @@ public class BaseEnemy_BattleState : EnemyState
             stateMachine.ChangeCurrentState(enemy.idleState);
     }
 
+
     private float DistancePlayer()
     {
         float distance = player == null ?
         float.MaxValue : Mathf.Abs(player.position.x - enemy.transform.position.x);
         return distance;
     }
-
     private bool BattleStateOver()
     {
         bool isOver = false;
@@ -56,7 +56,6 @@ public class BaseEnemy_BattleState : EnemyState
         if (elapsedTime > enemy.battleDuration) isOver = true;
         return isOver;
     }
-
     private int DirectionPlayer()
     {
         int direction = 1;
@@ -64,6 +63,8 @@ public class BaseEnemy_BattleState : EnemyState
             direction = player.position.x - enemy.transform.position.x > 0 ? 1 : -1;
         return direction;
     }
+
+
 
 
 }
